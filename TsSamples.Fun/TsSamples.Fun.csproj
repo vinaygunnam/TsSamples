@@ -55,6 +55,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -122,20 +123,6 @@
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
     <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
   </PropertyGroup>
-  <PropertyGroup>
-    <CopyAllFilesToSingleFolderForPackageDependsOn>
-      CustomCollectFiles;
-      $(CopyAllFilesToSingleFolderForPackageDependsOn);
-    </CopyAllFilesToSingleFolderForPackageDependsOn>
-  </PropertyGroup>
-  <Target Name="CustomCollectFiles">
-    <ItemGroup>
-      <_CustomFiles Include="Content\Samples\**\*.js.map" />
-      <FilesForPackagingFromProject Include="%(_CustomFiles.Identity)">
-        <DestinationRelativePath>Content\Samples\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
-      </FilesForPackagingFromProject>
-    </ItemGroup>
-  </Target>
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
