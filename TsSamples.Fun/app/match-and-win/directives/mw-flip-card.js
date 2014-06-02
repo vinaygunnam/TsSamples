@@ -9,18 +9,25 @@
                 replace: true,
                 templateUrl: "/app/match-and-win/directives/mw-flip-card.html",
                 scope: {
-                    team: "="
+                    slot: "="
                 },
                 link: function (scope, element) {
                     var container = element;
                     var card = container.find(".card");
                     card.on("click", function () {
                         card.toggleClass("flipped");
+                        scope.slot.flipped = !scope.slot.flipped;
                     });
 
                     scope.getSrc = function () {
-                        return "/assets/img/portfolio/" + scope.team + ".jpg";
+                        return "/assets/img/portfolio/" + scope.slot.team + ".jpg";
                     };
+
+                    scope.$watch("slot.revealed", function (newValue) {
+                        if (newValue) {
+                            card.off("click");
+                        }
+                    });
                 }
             };
 

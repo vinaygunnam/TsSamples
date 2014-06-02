@@ -40,6 +40,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="about.html" />
     <Content Include="app\match-and-win\directives\mw-flip-card.html" />
     <Content Include="assets\.DS_Store" />
     <Content Include="assets\css\.DS_Store" />
@@ -51,10 +52,15 @@
     <Content Include="assets\img\question.png" />
     <Content Include="assets\img\who.jpg" />
     <Content Include="assets\js\.DS_Store" />
+    <Content Include="blog.html" />
+    <Content Include="blog01.html" />
+    <Content Include="contact.html" />
     <Content Include="packages.config" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="work.html" />
+    <Content Include="work01.html" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -64,7 +70,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="about.html" />
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\main.css" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
@@ -80,14 +85,9 @@
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="assets\js\hover.zoom.conf.js" />
     <Content Include="assets\js\hover.zoom.js" />
-    <Content Include="blog.html" />
-    <Content Include="blog01.html" />
-    <Content Include="contact.html" />
     <Content Include="index.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Web.config" />
-    <Content Include="work.html" />
-    <Content Include="work01.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,6 +97,7 @@
     <TypeScriptCompile Include="app\match-and-win\controllers\GameController.ts" />
     <TypeScriptCompile Include="app\match-and-win\directives\mw-flip-card.ts" />
     <TypeScriptCompile Include="app\match-and-win\match-and-win.ts" />
+    <TypeScriptCompile Include="app\match-and-win\services\GameService.ts" />
     <TypeScriptCompile Include="app\_dependencies.ts" />
     <TypeScriptCompile Include="Scripts\typings\angular-ui-bootstrap\angular-ui-bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
@@ -108,6 +109,9 @@
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-scenario.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\match-and-win\factories\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -127,7 +131,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>16725</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

@@ -2,7 +2,7 @@
     "use strict";
 
     interface IFlipCardScope extends ng.IScope {
-        team: number;
+        slot: ISlot;
         getSrc(): string;
     }
  
@@ -13,18 +13,25 @@
                 replace: true,
                 templateUrl: "/app/match-and-win/directives/mw-flip-card.html",
                 scope: {
-                    team: "="
+                    slot: "="
                 },
                 link: (scope: IFlipCardScope, element: any): void => {
                     var container: JQuery = <JQuery>element;
                     var card: JQuery = container.find(".card");
                     card.on("click", (): void => {
                         card.toggleClass("flipped");
+                        scope.slot.flipped = !scope.slot.flipped;
                     });
 
                     scope.getSrc = (): string => {
-                        return "/assets/img/portfolio/" + scope.team + ".jpg";
+                        return "/assets/img/portfolio/" + scope.slot.team + ".jpg";
                     };
+
+                    scope.$watch("slot.revealed", (newValue?: boolean): void => {
+                        if (newValue) {
+                            card.off("click");
+                        }
+                    });
                 }
             };
 

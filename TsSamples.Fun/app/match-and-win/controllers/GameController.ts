@@ -1,7 +1,7 @@
 ﻿module MatchAndWin {
     "use strict";
 
-    interface ISlot {
+    export interface ISlot {
         team: number;
         flipped: boolean;
         revealed: boolean;
@@ -27,7 +27,9 @@
                 this.slots.push(slot);
             }
         }
+
+
     }
 
     container.controller("GameController", GameController);
-} 
+}
