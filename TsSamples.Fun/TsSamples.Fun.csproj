@@ -97,7 +97,6 @@
     <TypeScriptCompile Include="app\match-and-win\directives\mw-flip-card.ts" />
     <TypeScriptCompile Include="app\match-and-win\match-and-win.ts" />
     <TypeScriptCompile Include="app\_dependencies.ts" />
-    <TypeScriptCompile Include="Scripts\main.ts" />
     <TypeScriptCompile Include="Scripts\typings\angular-ui-bootstrap\angular-ui-bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />

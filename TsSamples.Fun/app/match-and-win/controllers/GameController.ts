@@ -4,6 +4,7 @@
     interface ISlot {
         team: number;
         flipped: boolean;
+        revealed: boolean;
     }
 
     class GameController {
@@ -11,13 +12,16 @@
         private numberOfSlots: number = 6;
         public slots: ISlot[];
 
-        constructor() { }
+        constructor() {
+            this.start();
+        }
 
         start(): void {
             this.slots = [];
-            for (var i = 0; i < this.numberOfSlots; i++) {
+            for (var i: number = 0; i < this.numberOfSlots; i++) {
                 var slot: ISlot = {
-                    team: Math.floor(Math.random() * 100) % 5 + 1,
+                    team: Math.floor(Math.random() * 100) % this.numberOfTeams + 1,
+                    revealed: false,
                     flipped: false
                 };
                 this.slots.push(slot);

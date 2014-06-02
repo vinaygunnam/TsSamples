@@ -1,5 +1,7 @@
 ﻿var MatchAndWin;
 (function (MatchAndWin) {
+    "use strict";
+
     var FlipCardDirective = (function () {
         function FlipCardDirective() {
             var flipCard = {
@@ -7,7 +9,7 @@
                 replace: true,
                 templateUrl: "/app/match-and-win/directives/mw-flip-card.html",
                 scope: {
-                    team: '='
+                    team: "="
                 },
                 link: function (scope, element) {
                     var container = element;
