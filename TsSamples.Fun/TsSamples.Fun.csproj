@@ -128,11 +128,19 @@
     <TypeScriptSourceMap>false</TypeScriptSourceMap>
     <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
   </PropertyGroup>
-  <Target Name="CopyTsAndMapFiles">
+  <PropertyGroup>
+    <CopyAllFilesToSingleFolderForPackageDependsOn>
+      CustomCollectFiles;
+      $(CopyAllFilesToSingleFolderForPackageDependsOn);
+    </CopyAllFilesToSingleFolderForPackageDependsOn>
+  </PropertyGroup>
+  <Target Name="CustomCollectFiles">
     <ItemGroup>
-      <COMMONAPP Include="app\**\*.*" />
+      <_CustomFiles Include="Content\Samples\**\*.js.map" />
+      <FilesForPackagingFromProject Include="%(_CustomFiles.Identity)">
+        <DestinationRelativePath>Content\Samples\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
     </ItemGroup>
-    <Copy SourceFiles="@(COMMONAPP)" DestinationFiles="@(COMMONAPP->'$(WebProjectOutputDir)\app\%(RecursiveDir)%(Filename)%(Extension)')" />
   </Target>
   <ProjectExtensions>
     <VisualStudio>
