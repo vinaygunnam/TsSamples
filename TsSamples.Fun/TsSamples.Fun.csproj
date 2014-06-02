@@ -128,19 +128,11 @@
     <TypeScriptSourceMap>false</TypeScriptSourceMap>
     <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
   </PropertyGroup>
-  <Target Name="CustomCollectFiles">
+  <Target Name="CopyTsAndMapFiles">
     <ItemGroup>
-      <_CustomFiles Include="app\**\*.ts" />
-      <FilesForPackagingFromProject Include="%(_CustomFiles.Identity)">
-        <DestinationRelativePath>app\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
-      </FilesForPackagingFromProject>
+      <COMMONAPP Include="app\**\*.*" />
     </ItemGroup>
-    <ItemGroup>
-      <_CustomFiles Include="app\**\*.js.map" />
-      <FilesForPackagingFromProject Include="%(_CustomFiles.Identity)">
-        <DestinationRelativePath>app\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
-      </FilesForPackagingFromProject>
-    </ItemGroup>
+    <Copy SourceFiles="@(COMMONAPP)" DestinationFiles="@(COMMONAPP->'$(WebProjectOutputDir)\app\%(RecursiveDir)%(Filename)%(Extension)')" />
   </Target>
   <ProjectExtensions>
     <VisualStudio>
@@ -164,7 +156,8 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
   -->
+  <Target Name="AfterBuild">
+    <CallTarget Targets="CopyTsAndMapFiles"></CallTarget>
+  </Target>
 </Project>
