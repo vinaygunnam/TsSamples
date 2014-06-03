@@ -22,11 +22,13 @@
                     var card: JQuery = container.find(".card");
                     scope.slot.setDomElement(card);
                     card.on("click", (): void => {
-                        // if card is closed, open it
-                        if (scope.slot.flipped === false) {
-                            scope.slot.open();
-                            gameService.checkForReveal();
-                        }
+                        scope.$apply((): void => {
+                            // if card is closed, open it
+                            if (scope.slot.flipped === false && scope.slot.animationInProgress === false) {
+                                scope.slot.open();
+                                gameService.checkForReveal();
+                            }
+                        });
                     });
 
                     scope.getSrc = (): string => {

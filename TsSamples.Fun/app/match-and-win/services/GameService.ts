@@ -1,4 +1,5 @@
-﻿module MatchAndWin {
+﻿/// <reference path="../../../scripts/common/utils.ts" />
+module MatchAndWin {
     "use strict";
 
     export interface IGameService {
@@ -13,43 +14,44 @@
     var matchCountFoReveal: number = 2;
 
     class GameService implements IGameService {
-        
         public slots: ISlot[];
         private callbackForGameComplete: () => void;
 
         reset(): void {
             this.slots = [];
 
+            var numberTeamsToBeSlotted: number = Math.floor(numberOfSlots / matchCountFoReveal);
+            var teamsPickedForSlotting: number[] = [];
+            for (var i: number = 0; i < numberTeamsToBeSlotted; i++) {
+                var randomTeam: number = Utils.RandomNumbers.GetRandom(numberOfTeams, 1, teamsPickedForSlotting);
+                teamsPickedForSlotting.push(randomTeam);
+            }
+
             var teamOccurences: number[] = new Array<number>(numberOfTeams);
-            angular.forEach(teamOccurences, (occurence: number, index: number) => {
-                teamOccurences[index] = 0;
-            });
-
             for (var i: number = 0; i < numberOfSlots; i++) {
-                var randomTeam: number;
-
+                var occurences: number,
+                    randomTeam: number;
                 do {
-                    randomTeam = Math.floor(Math.random() * 100) % numberOfTeams + 1;
-                } while (teamOccurences[randomTeam] + 1 <= matchCountFoReveal);
-
-                teamOccurences[randomTeam]++;
-                var slot: ISlot = new Slot(randomTeam);
-                this.slots.push(slot);
+                    randomTeam = Utils.RandomNumbers.GetRandomWithin(teamsPickedForSlotting);
+                    occurences = (teamOccurences[randomTeam - 1] || 0) + 1;
+                } while (occurences > matchCountFoReveal);
+                teamOccurences[randomTeam - 1] = occurences;
+                this.slots.push(new Slot(randomTeam));
             }
         }
 
         checkForReveal(): boolean {
-            var flippedSlots = [];
-            angular.forEach(this.slots, (slot: ISlot) => {
+            var flippedSlots: ISlot[] = [];
+            angular.forEach(this.slots, (slot: ISlot): void => {
                 if (slot && slot.flipped && !slot.revealed) {
                     flippedSlots.push(slot);
                 }
             });
 
-            var shouldReveal = true,
+            var shouldReveal: boolean = true,
                 matchedTeam: number = 0;
             if (flippedSlots.length === matchCountFoReveal) {
-                angular.forEach(flippedSlots, (slot: ISlot) => {
+                angular.forEach(flippedSlots, (slot: ISlot): void => {
                     if (matchedTeam === 0) {
                         matchedTeam = slot.team;
                     } else if (matchedTeam !== slot.team) {
@@ -57,7 +59,7 @@
                     }
                 });
 
-                angular.forEach(flippedSlots, (slot: ISlot) => {
+                angular.forEach(flippedSlots, (slot: ISlot): void => {
                     if (shouldReveal === true) {
                         slot.revealed = true;
                     } else {
@@ -72,8 +74,8 @@
         }
 
         private isGameOver(): boolean {
-            var flag = true;
-            angular.forEach(this.slots, (slot: ISlot) => {
+            var flag: boolean = true;
+            angular.forEach(this.slots, (slot: ISlot): void => {
                 flag = flag && slot.revealed;
             });
 
@@ -86,9 +88,9 @@
             return flag;
         }
 
-        onGameComplete(callback: () => void) {
+        onGameComplete(callback: () => void): void {
             this.callbackForGameComplete = callback;
-        } 
+        }
     }
 
     container.service("GameService", GameService);

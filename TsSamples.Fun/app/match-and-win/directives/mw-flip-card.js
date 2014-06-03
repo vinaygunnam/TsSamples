@@ -16,11 +16,13 @@
                     var card = container.find(".card");
                     scope.slot.setDomElement(card);
                     card.on("click", function () {
-                        // if card is closed, open it
-                        if (scope.slot.flipped === false) {
-                            scope.slot.open();
-                            gameService.checkForReveal();
-                        }
+                        scope.$apply(function () {
+                            // if card is closed, open it
+                            if (scope.slot.flipped === false && scope.slot.animationInProgress === false) {
+                                scope.slot.open();
+                                gameService.checkForReveal();
+                            }
+                        });
                     });
 
                     scope.getSrc = function () {
