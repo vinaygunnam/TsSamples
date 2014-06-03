@@ -1,0 +1,8 @@
+﻿<h3>Match and reveal the team cards</h3>
+
+<button data-ng-click="gc.reset()">Reset the game</button>
+<div class="row mt centered">
+    <div class="col-lg-4" data-ng-repeat="slot in gc.slots">
+        <div data-mw-flip-card="" data-slot="slot"></div>
+    </div>
+</div>

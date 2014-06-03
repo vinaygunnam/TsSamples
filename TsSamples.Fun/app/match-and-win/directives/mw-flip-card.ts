@@ -24,7 +24,7 @@
                     card.on("click", (): void => {
                         scope.$apply((): void => {
                             // if card is closed, open it
-                            if (scope.slot.flipped === false && scope.slot.animationInProgress === false) {
+                            if (scope.slot.flipped === false && animationInProgress === false) {
                                 scope.slot.open();
                                 gameService.checkForReveal();
                             }

@@ -18,7 +18,7 @@
                     card.on("click", function () {
                         scope.$apply(function () {
                             // if card is closed, open it
-                            if (scope.slot.flipped === false && scope.slot.animationInProgress === false) {
+                            if (scope.slot.flipped === false && MatchAndWin.animationInProgress === false) {
                                 scope.slot.open();
                                 gameService.checkForReveal();
                             }

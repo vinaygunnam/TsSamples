@@ -42,8 +42,11 @@
   <ItemGroup>
     <Content Include="about.html" />
     <Content Include="app\match-and-win\directives\mw-flip-card.html" />
+    <Content Include="app\templates\home.html" />
+    <Content Include="app\templates\match-and-win.html" />
     <Content Include="assets\.DS_Store" />
     <Content Include="assets\css\.DS_Store" />
+    <Content Include="assets\css\slot.css" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
@@ -56,12 +59,17 @@
     <Content Include="blog01.html" />
     <Content Include="contact.html" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="work.html" />
     <Content Include="work01.html" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
+    <Content Include="Scripts\angular-route.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -101,7 +109,7 @@
     <TypeScriptCompile Include="app\match-and-win\services\GameService.ts" />
     <TypeScriptCompile Include="app\_dependencies.ts" />
     <TypeScriptCompile Include="Scripts\common\Utils.ts" />
-    <TypeScriptCompile Include="Scripts\typings\angular-ui-bootstrap\angular-ui-bootstrap.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angular-ui\angular-ui-router.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />
