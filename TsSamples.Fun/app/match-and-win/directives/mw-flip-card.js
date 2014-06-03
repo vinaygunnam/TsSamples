@@ -3,7 +3,7 @@
     "use strict";
 
     var FlipCardDirective = (function () {
-        function FlipCardDirective() {
+        function FlipCardDirective(gameService) {
             var flipCard = {
                 restrict: "A",
                 replace: true,
@@ -14,25 +14,24 @@
                 link: function (scope, element) {
                     var container = element;
                     var card = container.find(".card");
+                    scope.slot.setDomElement(card);
                     card.on("click", function () {
-                        card.toggleClass("flipped");
-                        scope.slot.flipped = !scope.slot.flipped;
+                        // if card is closed, open it
+                        if (scope.slot.flipped === false) {
+                            scope.slot.open();
+                            gameService.checkForReveal();
+                        }
                     });
 
                     scope.getSrc = function () {
                         return "/assets/img/portfolio/" + scope.slot.team + ".jpg";
                     };
-
-                    scope.$watch("slot.revealed", function (newValue) {
-                        if (newValue) {
-                            card.off("click");
-                        }
-                    });
                 }
             };
 
             return flipCard;
         }
+        FlipCardDirective.$inject = ["GameService"];
         return FlipCardDirective;
     })();
 

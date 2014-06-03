@@ -7,7 +7,9 @@
     }
  
     class FlipCardDirective {
-        constructor() {
+        public static $inject = ["GameService"];
+
+        constructor(gameService: IGameService) {
             var flipCard: ng.IDirective = {
                 restrict: "A",
                 replace: true,
@@ -18,20 +20,18 @@
                 link: (scope: IFlipCardScope, element: any): void => {
                     var container: JQuery = <JQuery>element;
                     var card: JQuery = container.find(".card");
+                    scope.slot.setDomElement(card);
                     card.on("click", (): void => {
-                        card.toggleClass("flipped");
-                        scope.slot.flipped = !scope.slot.flipped;
+                        // if card is closed, open it
+                        if (scope.slot.flipped === false) {
+                            scope.slot.open();
+                            gameService.checkForReveal();
+                        }
                     });
 
                     scope.getSrc = (): string => {
                         return "/assets/img/portfolio/" + scope.slot.team + ".jpg";
                     };
-
-                    scope.$watch("slot.revealed", (newValue?: boolean): void => {
-                        if (newValue) {
-                            card.off("click");
-                        }
-                    });
                 }
             };
 

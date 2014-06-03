@@ -106,7 +106,7 @@
 
     <!-- Main -->
     <div class="container pt" data-ng-controller="GameController as gc">
-        <button data-ng-click="gc.start()">Reset the game</button>
+        <button data-ng-click="gc.reset()">Reset the game</button>
         <div class="row mt centered">
             <div class="col-lg-4" data-ng-repeat="slot in gc.slots">
                 <div data-mw-flip-card="" data-slot="slot"></div>
@@ -131,6 +131,7 @@
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="Scripts/angular.js"></script>
     <script src="app/match-and-win/match-and-win.js"></script>
+    <script src="app/match-and-win/services/GameService.js"></script>
     <script src="app/match-and-win/directives/mw-flip-card.js"></script>
     <script src="app/match-and-win/controllers/GameController.js"></script>
 </body>

@@ -1,34 +1,27 @@
 ﻿module MatchAndWin {
     "use strict";
 
-    export interface ISlot {
-        team: number;
-        flipped: boolean;
-        revealed: boolean;
-    }
-
     class GameController {
-        private numberOfTeams: number = 5;
-        private numberOfSlots: number = 6;
+        public static $inject = ["GameService"];
         public slots: ISlot[];
 
-        constructor() {
-            this.start();
+        private gameService: IGameService;
+
+        constructor(gameService: IGameService) {
+            this.gameService = gameService;
+            this.gameService.onGameComplete(this.onGameComplete);
+
+            this.reset();
         }
 
-        start(): void {
-            this.slots = [];
-            for (var i: number = 0; i < this.numberOfSlots; i++) {
-                var slot: ISlot = {
-                    team: Math.floor(Math.random() * 100) % this.numberOfTeams + 1,
-                    revealed: false,
-                    flipped: false
-                };
-                this.slots.push(slot);
-            }
+        reset(): void {
+            this.gameService.reset();
+            this.slots = this.gameService.slots;
         }
 
-
+        onGameComplete(): void {
+            alert("Game over");
+        }
     }
 
     container.controller("GameController", GameController);
