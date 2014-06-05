@@ -5,7 +5,7 @@
 
     container.config(["$locationProvider", "$urlRouterProvider", "$stateProvider",
         (locationProvider: ng.ILocationProvider, urlRouterProvider: ng.route.IRouteProvider, stateProvider: ng.ui.IStateProvider): void => {
-            locationProvider.html5Mode(false).hashPrefix('!');
+            locationProvider.html5Mode(false);
 
             urlRouterProvider
                 .otherwise("/");
@@ -20,5 +20,7 @@
                     templateUrl: "/app/templates/match-and-win.html",
                     controller: "GameController as gc"
                 });
+
+            
         }]);
 }

@@ -145,22 +145,22 @@ declare module angularScenario {
     }
 }
 
-declare var describe: angularScenario.RunFunctionWithDescription;
-declare var ddescribe: angularScenario.RunFunctionWithDescription;
-declare var xdescribe: angularScenario.RunFunctionWithDescription;
-declare var beforeEach: angularScenario.RunFunction;
-declare var afterEach: angularScenario.RunFunction;
-declare var it: angularScenario.RunFunctionWithDescription;
-declare var iit: angularScenario.RunFunctionWithDescription;
-declare var xit: angularScenario.RunFunctionWithDescription;
+//declare var describe: angularScenario.RunFunctionWithDescription;
+//declare var ddescribe: angularScenario.RunFunctionWithDescription;
+//declare var xdescribe: angularScenario.RunFunctionWithDescription;
+//declare var beforeEach: angularScenario.RunFunction;
+//declare var afterEach: angularScenario.RunFunction;
+//declare var it: angularScenario.RunFunctionWithDescription;
+//declare var iit: angularScenario.RunFunctionWithDescription;
+//declare var xit: angularScenario.RunFunctionWithDescription;
 declare var pause: angularScenario.PauseFunction;
 declare var sleep: angularScenario.SleepFunction;
-declare function browser(): angularScenario.Browser;
+//declare function browser(): angularScenario.Browser;
 declare function expect(expectation: angularScenario.Future): angularScenario.Expect;
 declare var using: angularScenario.UsingFunction;
 declare var binding: angularScenario.BindingFunction;
 declare function input(ngModelBinding: string): angularScenario.Input;
 declare function repeater(selector: string, repeaterDescription?: string): angularScenario.Repeater;
 declare function select(ngModelBinding: string): angularScenario.Select;
-declare function element(selector: string, elementDescription?: string): angularScenario.Element;
+//declare function element(selector: string, elementDescription?: string): angularScenario.Element;
 declare var angular: ng.IAngularStatic;
