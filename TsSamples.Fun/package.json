@@ -1,0 +1,19 @@
+{
+  "name": "ts-samples-fun",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tests.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-angular-protractor": "0.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node tests.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

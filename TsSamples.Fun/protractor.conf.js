@@ -4,5 +4,6 @@
         showColors: true,
         defaultTimeoutInterval: 30000
     },
-    baseUrl: 'http://localhost:16725'
+    baseUrl: 'http://localhost:16725',
+    framework: 'jasmine2'
 };

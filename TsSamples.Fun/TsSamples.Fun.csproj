@@ -68,11 +68,14 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <TypeScriptCompile Include="Scripts\typings\requirejs\require.d.ts" />
-    <TypeScriptCompile Include="tests\e2e\index.regular.specc.ts" />
+    <TypeScriptCompile Include="tests\e2e\index.regular.spec.ts" />
+    <Content Include="tests.js" />
     <Content Include="work.html" />
     <Content Include="work01.html" />
+    <Content Include="default.ps1" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="run-tests.bat" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
